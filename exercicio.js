@@ -1,21 +1,12 @@
-
-function analisarCredito1() {
-    var compras = [2500, 1200, 800, 100];
-    var totalCompras = compras[0];
-    var limite = 5000;
-    var status = 'aprovado';
-    var saldoDisponivel = 0;
-    var i = 1;
-
-    do {
-        totalCompras += compras[i];
-        i++;
-    } while (limite >= totalCompras && i < compras.length);
-
-    saldoDisponivel = limite - totalCompras;
-
-    if (saldoDisponivel < 0) {
-        status = 'negado';
+var valor = 100;
+function calcularFrete() {
+    
+    if (valor <= 50) {
+        console.log("Frete não disponível");
+    } else if ( valor < 199.99) {
+        console.log("Frete com custo adicional");
+    } else {
+        console.log("Frete grátis");
     }
-    console.log(`Seu crédito foi ${status}. Saldo disponível: ${saldoDisponivel}.`);
 }
+calcularFrete();
