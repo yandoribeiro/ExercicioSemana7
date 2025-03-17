@@ -246,17 +246,15 @@ Pedidos de R$200,00 ou mais → "Frete grátis!"
 ```
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
 ```
-1. Início
-2. Definir valor total = 100
-3. Criar função determinar frete:
- 3.1. Se valor total <= 50:
-    - Exibir "Frete não disponível
- 3.2. Senão, se valor total <199,99:
+Definir valor total = 100
+Criar função determinar frete:
+Se valor total <= 50:
+    - Exibir "Frete não disponível"
+Senão, se valor total < 199,99:
     - Exibir "Frete com custo adicional"
- 3.3. Senão:
+Senão:
     - Exibir "Frete grátis"
-4. Chamar função determinar frete
-5. Fim
+Chamar função determinar frete
 ```
 ______
 
@@ -275,6 +273,37 @@ Método CalcularConsumo():
 ```
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
+
+```
+Classe Carro extende classe Veículo:
+Atributos : 
+modelo
+ano
+quilometragem
+eficiencia
+tracao
+
+Método constructor(modelo, ano, quilometragem, eficiencia, tracao):
+super constructor(modelo, ano)
+
+Método CalcularConsumo():
+retorna quilometragem / eficiencia
+```
+
+```
+Classe Moto extende classe Veículo:
+Atributos:
+modelo
+ano
+quilometragem
+eficiencia
+
+Método constructor(modelo, ano, quilometragem, eficiencia):
+super constructor(modelo, ano)
+
+Método CalcularConsumo():
+retorna quilometragem / eficiencia
+```
 ______
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
