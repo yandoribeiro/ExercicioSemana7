@@ -103,13 +103,13 @@ function analisarCredito2() {
 ```
 Se ambas as funções forem executadas com os valores fornecidos, qual será a saída exibida no console?
 
-A) Ambas as funções exibirão: 'Seu crédito foi negado. Saldo disponível: -600.'
+**A) Ambas as funções exibirão: 'Seu crédito foi aprovado. Saldo disponível: 400.'**
 
 B) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -600.', enquanto analisarCredito2() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.'
 
-C) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.', enquanto analisarCredito2() exibirá: 'Seu crédito foi negado. Saldo disponível: -600.'
+C) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.', enquanto analisarCredito2() exibirá: 'Seu crédito foi aprovado. Saldo disponível: 100.'
 
-D) Ambas as funções exibirão: 'Seu crédito foi negado. Saldo disponível: -200.'
+D) Ambas as funções exibirão: 'Seu crédito foi aprovado Saldo disponível: 500.'
 ______
 
 **3)** Considere o seguinte trecho de código em JavaScript:
@@ -286,6 +286,7 @@ tracao
 Método constructor(modelo, ano, quilometragem, eficiencia, tracao):
 super constructor(modelo, ano)
 
+Define os valores dos atributos "quilometragem", "eficiencia" e "tracao" com os valores passados como parâmetro.
 Método CalcularConsumo():
 retorna quilometragem / eficiencia
 ```
@@ -301,6 +302,7 @@ eficiencia
 Método constructor(modelo, ano, quilometragem, eficiencia):
 super constructor(modelo, ano)
 
+Define os valores dos atributos "quilometragem" e "eficiencia" com os valores passados como parâmetro.
 Método CalcularConsumo():
 retorna quilometragem / eficiencia
 ```
@@ -317,6 +319,36 @@ Considere a fórumla de atualização velocidade:
     velocidade = velocidadeInicial - desaceleracao * tempo
 ```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
+
+```velocidadeInicial = 1000
+    velocidadeSegura = 5
+    desaceleracao = 10
+    tempoMaximo = 200
+    desaceleracaoMinima = 0.1
+
+    tempo = 0
+    velocidade = velocidadeInicial
+    atingiuVelocidadeSegura = falso
+
+    enquanto (velocidade > velocidadeSegura) e (tempo <= tempoMaximo) faça:
+
+        velocidade = velocidadeInicial - desaceleracao * tempo
+
+        se (velocidade <= velocidadeSegura) então:
+            atingiuVelocidadeSegura = verdadeiro
+            parar
+
+        tempo = tempo + 1
+
+        se (desaceleracao < desaceleracaoMinima) então:
+            escrever "A desaceleração está abaixo do limite mínimo permitido."
+            parar
+
+    se (tempo > tempoMaximo) então:
+        escrever "A sonda não conseguiu atingir a velocidade segura dentro do tempo máximo."
+    senão se (atingiuVelocidadeSegura) então:
+        escrever "A sonda atingiu a velocidade segura de pouso em " + tempo + " segundos."
+```
 ______
 
 **10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
@@ -349,3 +381,35 @@ Escrever("Total de investimentos acumulados:")
 ImprimirMatriz(totalInvestimentos)  
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+```
+Função MultiplicarMatrizesInvestimento(matrizA, matrizB):  
+    # Verifica se o número de colunas de matrizA é igual ao número de linhas de matrizB  
+    Se tamanho(matrizA[0]) ≠ tamanho(matrizB) então:  
+        Retornar "As matrizes não podem ser multiplicadas. Elas têm dimensões incompatíveis."  
+
+    Senão:  
+        linhasA <- tamanho(matrizA)  
+        colunasA <- tamanho(matrizA[0])  
+        colunasB <- tamanho(matrizB[0])  
+        matrizResultado <- novaMatriz(linhasA, colunasB)  
+
+        # Loop para percorrer as linhas de matrizA e colunas de matrizB  
+        Para i de 0 até linhasA-1 faça:  
+            Para j de 0 até colunasB-1 faça:  
+                matrizResultado[i][j] <- 0   # Inicializa a posição da matriz resultado
+
+                # Calcula o produto escalar da linha de matrizA e coluna de matrizB  
+                Para k de 0 até colunasA-1 faça:  
+                    matrizResultado[i][j] <- matrizResultado[i][j] + (matrizA[i][k] * matrizB[k][j])
+
+        Retornar matrizResultado  
+
+# Exemplo de uso da função  
+investimentosAno1 <- [[1000, 2000], [1500, 2500]]  
+taxaCrescimento <- [[1.1, 1.05], [1.2, 1.15]]  
+
+resultadosFuturos <- MultiplicarMatrizesInvestimento(investimentosAno1, taxaCrescimento)  
+Escrever("Resultados futuros dos investimentos:")  
+ImprimirMatriz(resultadosFuturos)  
+```
